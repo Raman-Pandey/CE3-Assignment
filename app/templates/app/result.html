@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Analysis Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Data Analysis Results</h1>
+        
+        <h2>First Few Rows of the Data</h2>
+        <div class="table-responsive">{{ first_rows|safe }}</div>
+        
+        <h2>Summary Statistics</h2>
+        <div class="table-responsive">{{ summary_stats|safe }}</div>
+
+        <h2>Missing Values</h2>
+        <div class="table-responsive">{{ missing_values|safe }}</div>
+        
+        <h2>Plots</h2>
+        <div>
+            {% for plot in plots %}
+                <img src="{{ plot }}" alt="Plot">
+            {% endfor %}
+        </div>
+        
+        <a href="{% url 'upload' %}" class="btn btn-secondary mt-4">Upload Another File</a>
+    </div>
+</body>
+</html>
